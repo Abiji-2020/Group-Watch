@@ -67,4 +67,16 @@ body {
     padding: 20px;
     text-align: center;
   }
+  @media (max-width: 768px) {
+    /* Mobile-specific styles */
+    .container {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    button {
+      width: 100%;
+    }
+  }
+  
   

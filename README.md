@@ -8,3 +8,6 @@ Now the process are done in express using postman api and done some basic fronte
 In this project it is added react and node.js and express for the working of it.
 
 It is run on the MERN Stack 
+
+
+-- Currently updating this project in alphine js to reduce the size and to improve the connectivity

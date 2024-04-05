@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Threads",
+  title: "Threads-Clone",
   description: "Created By Abinand, As a helping project for the understanding of the language typescript and the next.js framework and the MERN stack",
 };
 

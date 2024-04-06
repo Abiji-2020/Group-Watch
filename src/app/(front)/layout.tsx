@@ -8,11 +8,12 @@ export const metadata : Metadata = {
 }
 
 export default function FrontLayout({
-    children
-}: Readonly<{
+    children,
+}: {
     children: React.ReactNode;
-}>){
+}){ return(
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
         {children}
-    </ThemeProvider>;
+    </ThemeProvider>
+);
 }

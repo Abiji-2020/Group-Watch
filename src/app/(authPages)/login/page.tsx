@@ -12,8 +12,9 @@ export default function Login() {
     password: "",
   });
 
-  const submit = () => {
+  const submit = (event : React.FormEvent) => {
     console.log("The auth state is ", authState);
+    event.preventDefault();
   };
 
   return (

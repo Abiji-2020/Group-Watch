@@ -1,16 +1,31 @@
-import { Button } from "@/components/ui/button";
-import ModeToggle from "@/components/common/ThemeToggleBtn";
-import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/options";
+import Image from "next/image";
+import { fetchPosts } from "@/lib/serverMethods";
+import AddThread from "@/components/threads/AddThread";
+import PostCard from "@/components/common/PostCard";
+import { Suspense } from "react";
+import Loading from "@/components/common/loading";
+
 export default async function Home() {
-
-  const session = await getServerSession(authOptions)
+  const posts: Array<PostType> | [] = await fetchPosts(1);
   return (
-   <div>Hello World
-
-    <Button>Click Me</Button>
-    <ModeToggle />
-    {session && JSON.stringify(session)}
-   </div>
+    <div>
+      <div className="flex justify-center items-center">
+        <Image
+          src="/images/logo.svg"
+          width={50}
+          height={50}
+          alt="Logo"
+          className="hidden md:block"
+        />
+      </div>
+      <AddThread />
+      <Suspense fallback={<Loading />}>
+        <div className="mt-10">
+          {posts.map((item) => (
+            <PostCard post={item} key={item.id} />
+          ))}
+        </div>
+      </Suspense>
+    </div>
   );
 }

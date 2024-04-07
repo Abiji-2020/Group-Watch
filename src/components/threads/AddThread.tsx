@@ -103,6 +103,8 @@ export default function AddThread() {
           ref={imageRef}
           className="hidden"
           onChange={handleImageChange}
+          title="Upload Image"
+          placeholder="Select an image"
         />
         <Image
           onClick={handleIconClick}

@@ -10,14 +10,13 @@ import axios from "axios";
 import { signIn } from "next-auth/react";
 import ThemeToggleBtn from "@/components/common/ThemeToggleBtn";
 import { useSession } from "next-auth/react";
-//import { useRouter } from "next/navigation";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
+
 
 export default function Login() {
   
   const router = useRouter();
-
-  const {message} = router.query;
+ 
   const { status } = useSession();
   const [authState, setAuthState] = useState<AuthStateType>({
     email: "",
@@ -64,15 +63,7 @@ export default function Login() {
           <div className="flex justify-center">
             <Image src="/images/logo.svg" width={50} height={50} alt="Logo" />
           </div>
-            <React.Suspense fallback={<div>Loading...</div>}>
-        {message? (
-            <div className="bg-green-300 p-5 rounded-lg font-bold my-4 text-black">
-              <strong>Success!</strong> {message}
-            </div>
-          ) : (
-            <></>
-          )}
-      </React.Suspense>
+           
   
           <form onSubmit={login}>
             <div className="mt-5">

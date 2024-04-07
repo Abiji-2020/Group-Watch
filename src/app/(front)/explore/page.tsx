@@ -1,10 +1,11 @@
-import DyanmicNavBar from "@/components/common/DyanmicNavBar";
+import DynamicNavBar from "@/components/common/DynamicNavBar";
 import React, { Suspense } from "react";
 
 import ExploreSearchBar from "@/components/explore/ExploreSearchBar";
 import { searchUser } from "@/lib/serverMethods";
 import UserListCard from "@/components/common/UserListCard";
 import { Metadata } from "next";
+import DyanmicNavBar from "@/components/common/DynamicNavBar";
 
 export const metadata: Metadata = {
   title: "Explore",

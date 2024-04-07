@@ -1,6 +1,6 @@
 import "../globals.css";
 import type { Metadata } from "next";
-import CustomProvider from "../CustomProvider";
+import CustomProvider from "../providers";
 
 export const metadata: Metadata = {
   title: "Auth Page",

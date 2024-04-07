@@ -21,6 +21,7 @@
     "bcryptjs": "^2.4.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "dialog": "^0.3.1",
     "lucide-react": "^0.365.0",
     "next": "14.1.4",
     "next-auth": "^4.24.7",
@@ -29,6 +30,7 @@
     "prisma": "^5.12.1",
     "react": "^18",
     "react-dom": "^18",
+    "shadcn-ui": "^0.8.0",
     "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7"
   },

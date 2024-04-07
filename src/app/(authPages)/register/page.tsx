@@ -9,6 +9,7 @@ import Link from "next/link";
 import axios from "axios";
 import {useRouter} from 'next/navigation'
 
+
 export default function Register() {
 
 
@@ -39,7 +40,7 @@ export default function Register() {
 
         if (response.status === 200) {
 
-          router.push('/login?message=${response.message}')
+          router.push(`/login?message=${response.message}`)
 
         } else if (response.status === 400) {
           setErrors(response.errors);

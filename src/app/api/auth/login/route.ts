@@ -12,7 +12,6 @@ export async function POST(request: NextRequest) {
     const validator = vine.compile(loginSchema);
     const payload = await validator.validate(data);
 
-
     // * To check if the email is already registered
 
     const findUser = await prisma.user.findUnique({
@@ -21,18 +20,32 @@ export async function POST(request: NextRequest) {
       },
     });
     if (!findUser) {
-      return NextResponse.json({ status: 400, errors:{
-        email: "No User exits with this Email."
-      } })
+      return NextResponse.json({
+        status: 400,
+        errors: {
+          email: "No User exits with this Email.",
+        },
+      });
     }
 
-    // To check password matches 
-        const checkPassword = bcrypt.compareSync(payload.password, findUser.password!);
-        if(checkPassword){
-
-            return NextResponse.json({ status: 200, message: "User Logged in Successfully" });
-        }
- return NextResponse.json({ status: 400, message: "Invalid Credintials" });
+    // To check password matches
+    const checkPassword = bcrypt.compareSync(
+      payload.password,
+      findUser.password!
+    );
+    if (checkPassword) {
+      return NextResponse.json({
+        status: 200,
+        message: "User Logged in Successfully",
+      });
+    }
+    return NextResponse.json({
+      status: 400,
+      errors: {
+        email: "Invalid Credintials",
+        
+      },
+    });
   } catch (error) {
     if (error instanceof errors.E_VALIDATION_ERROR) {
       return NextResponse.json({ status: 400, errors: error.messages });

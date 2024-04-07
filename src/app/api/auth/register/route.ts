@@ -45,7 +45,14 @@ export async function POST(request: NextRequest) {
     const salt = bcrypt.genSaltSync(10);
     payload.password = bcrypt.hashSync(payload.password, salt);
 
-    return NextResponse.json({ status: 200, payload });
+
+    //Insert record in DB
+
+    await prisma.user.create({
+      data: payload
+    });
+
+    return NextResponse.json({ status: 200, message: "Account Created Successfully" });
   } catch (error) {
     if (error instanceof errors.E_VALIDATION_ERROR) {
       return NextResponse.json({ status: 400, errors: error.messages });

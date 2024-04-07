@@ -6,7 +6,16 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 
+import axios from "axios";
+import {useRouter} from 'next/navigation'
+
 export default function Register() {
+
+
+
+  const router = useRouter();
+
+
   const [authState, setAuthStata] = useState<AuthStateType>({
     name: "",
     username: "",
@@ -15,9 +24,31 @@ export default function Register() {
     password_confirmation: "",
   });
 
-  const submit = (event : React.FormEvent) => {
-    console.log("The auth state is ", authState);
+  const [errors, setErrors] = useState<AuthErrorType>({});
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const submit = (event: React.FormEvent) => {
     event.preventDefault();
+
+    setLoading(true);
+    axios
+      .post("/api/auth/register", authState)
+      .then((res) => {
+        setLoading(false);
+        const response = res.data;
+
+        if (response.status === 200) {
+
+          router.push('/login?message=${response.message}')
+
+        } else if (response.status === 400) {
+          setErrors(response.errors);
+        }
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.log("The error is ", err);
+      });
   };
 
   return (
@@ -40,7 +71,9 @@ export default function Register() {
                   setAuthStata({ ...authState, name: e.target.value })
                 }
               />
+              <span className="text-red-400">{errors?.name}</span>
             </div>
+
             <div className="mt-5">
               <Label htmlFor="username">Username</Label>
               <Input
@@ -51,6 +84,7 @@ export default function Register() {
                   setAuthStata({ ...authState, username: e.target.value })
                 }
               />
+              <span className="text-red-400">{errors?.username}</span>
             </div>
             <div className="mt-5">
               <Label htmlFor="email">Email</Label>
@@ -62,6 +96,7 @@ export default function Register() {
                   setAuthStata({ ...authState, email: e.target.value })
                 }
               />
+              <span className="text-red-400">{errors?.email}</span>
             </div>
 
             <div className="mt-5">
@@ -74,6 +109,7 @@ export default function Register() {
                   setAuthStata({ ...authState, password: e.target.value })
                 }
               />
+              <span className="text-red-400">{errors?.password}</span>  
             </div>
 
             <div className="mt-5">
@@ -83,17 +119,19 @@ export default function Register() {
                 id="cpassword"
                 placeholder="Enter your confirm password"
                 onChange={(e) =>
-                  setAuthStata({ ...authState, password_confirmation: e.target.value })
+                  setAuthStata({
+                    ...authState,
+                    password_confirmation: e.target.value,
+                  })
                 }
               />
+              <span className="text-red-400">{errors?.password_confirmation}</span>
             </div>
 
-
             <div className="mt-5">
-              <button
-                className="w-full bg-primary text-primary-foreground p-3 rounded-lg"
-              >
-                Register
+              <button className="w-full bg-primary text-primary-foreground p-3 rounded-lg"
+              disabled={loading}>
+                {loading ? "Processing..." : "Register"}
               </button>
             </div>
           </form>

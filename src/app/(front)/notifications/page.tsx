@@ -1,4 +1,4 @@
-import DyanmicNavBar from "@/components/common/DyanmicNavBar";
+import DyanmicNavBar from "@/components/common/DynamicNavBar";
 import UserAvatar from "@/components/common/UserAvatar";
 import { fetchNotifications } from "@/lib/serverMethods";
 import { formateDate } from "@/lib/utils";

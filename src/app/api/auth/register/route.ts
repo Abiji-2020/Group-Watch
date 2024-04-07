@@ -1,4 +1,4 @@
-import { registerSchema } from "@/validators/registerSchema";
+import { registerSchema } from "@/validators/authSchema";
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import vine, { errors } from "@vinejs/vine";

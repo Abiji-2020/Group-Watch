@@ -6,7 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { fetchUserComments, fetchUserPosts } from "@/lib/serverMethods";
 import PostCard from "@/components/common/PostCard";
 import CommentCard from "@/components/common/CommentCard";
-import DyanmicNavBar from "@/components/common/DyanmicNavBar";
+import DyanmicNavBar from "@/components/common/DynamicNavBar";
 import {
   CustomSession,
   authOptions,

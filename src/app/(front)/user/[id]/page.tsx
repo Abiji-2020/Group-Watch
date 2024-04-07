@@ -1,4 +1,4 @@
-import DyanmicNavBar from "@/components/common/DyanmicNavBar";
+import DyanmicNavBar from "@/components/common/DynamicNavBar";
 import UserProfileAvatar from "@/components/common/UserProfileAvatar";
 import { fetchUser } from "@/lib/serverMethods";
 import React from "react";

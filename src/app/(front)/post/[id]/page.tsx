@@ -1,6 +1,6 @@
 import CommentCard from "@/components/common/CommentCard";
 import PostCard from "@/components/common/PostCard";
-import DynamicNavbar from "@/components/common/DyanmicNavBar";
+import DynamicNavbar from "@/components/common/DynamicNavBar";
 import { fetchPost } from "@/lib/serverMethods";
 import React from "react";
 

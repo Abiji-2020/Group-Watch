@@ -13,7 +13,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 export default function Login() {
-  const [params] = useSearchParams();
+  const params = useSearchParams();
   const router = useRouter();
   const { status } = useSession();
   const [authState, setAuthState] = useState<AuthStateType>({

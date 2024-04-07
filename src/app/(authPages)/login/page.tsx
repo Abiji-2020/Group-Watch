@@ -13,7 +13,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 export default function Login() {
-  const params = useSearchParams();
+  const [params] = useSearchParams();
   const router = useRouter();
   const { status } = useSession();
   const [authState, setAuthState] = useState<AuthStateType>({
@@ -61,13 +61,16 @@ export default function Login() {
           <div className="flex justify-center">
             <Image src="/images/logo.svg" width={50} height={50} alt="Logo" />
           </div>
-          {params.get("message") ? (
+            <React.Suspense fallback={<div>Loading...</div>}>
+        {params.get("message") ? (
             <div className="bg-green-300 p-5 rounded-lg font-bold my-4 text-black">
               <strong>Success!</strong> {params.get("message")}
             </div>
           ) : (
             <></>
           )}
+      </React.Suspense>
+  
           <form onSubmit={login}>
             <div className="mt-5">
               <div className="flex justify-between items-center">

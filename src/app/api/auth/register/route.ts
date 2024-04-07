@@ -1,8 +1,8 @@
-import { registerSchema } from "@/validation/registerSchema";
+import { registerSchema } from "@/validators/registerSchema";
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import vine, { errors } from "@vinejs/vine";
-import { CustomErrorReporter } from "@/validation/CustomErrorReporter";
+import { CustomErrorReporter } from "@/validators/CustomErrorReporter";
 import prisma from "@/DB/db.config";
 
 export async function POST(request: NextRequest) {
